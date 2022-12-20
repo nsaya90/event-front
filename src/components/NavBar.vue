@@ -1,15 +1,22 @@
 <template>
     <ul class="nav">
         <li class="nav-item">
-            <router-link to="/" class="nav-link" href="#"
+            <router-link to="/list-event" class="nav-link" v-if="idUser"
+                ><img class="logo" src="../assets/logo.jpg" alt="logo"
+            /></router-link>
+
+            <router-link to="/" class="nav-link" v-else
                 ><img class="logo" src="../assets/logo.jpg" alt="logo"
             /></router-link>
         </li>
         <li class="nav-item">
-            <router-link to="" class="nav-link" href="#">Visiteur</router-link>
+            <router-link to="" class="nav-link">Visiteur</router-link>
         </li>
         <li class="nav-item">
-            <router-link to="/pro" class="nav-link" href="#"
+            <router-link to="/profil" class="nav-link" v-if="idUser"
+                >Professionel</router-link
+            >
+            <router-link to="/pro" class="nav-link" v-else
                 >Professionel</router-link
             >
         </li>
@@ -17,9 +24,15 @@
 </template>
 
 <script>
+const idUser = localStorage.getItem("id");
 export default {
     name: "NavBar",
-    props: {},
+    props: ["path"],
+    data() {
+        return {
+            idUser: idUser,
+        };
+    },
 };
 </script>
 

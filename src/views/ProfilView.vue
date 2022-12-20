@@ -14,9 +14,22 @@
                     <li class="list-group-item">Email : {{ info.email }}</li>
                 </ul>
 
-                <button class="btn_update" @click="formUpdate">
-                    Modifier vos informations
-                </button>
+                <div class="box_btn-profil">
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        @click="formUpdate"
+                    >
+                        Modifier vos informations
+                    </button>
+                    <button
+                        @click="addEnvent"
+                        type="button"
+                        class="btn btn-warning"
+                    >
+                        Ajouter un événement
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -25,10 +38,11 @@
                 <h2>Modifier vos informations</h2>
 
                 <input
-                    class="form_input"
+                    v-model="firstname"
+                    class="form-control form-control-sm"
                     type="text"
                     placeholder="Nom"
-                    v-model="firstname"
+                    aria-label=".form-control-sm example"
                 />
                 <p
                     class="errors"
@@ -37,21 +51,24 @@
                 ></p>
 
                 <input
-                    class="form_input"
+                    v-model="lastname"
+                    class="form-control form-control-sm"
                     type="text"
                     placeholder="Prénom"
-                    v-model="lastname"
+                    aria-label=".form-control-sm example"
                 />
                 <p
                     class="errors"
                     v-if="this.errors.lastname"
                     v-text="errors.lastname[0]"
                 ></p>
+
                 <input
-                    class="form_input"
+                    v-model="nickname"
+                    class="form-control form-control-sm"
                     type="text"
                     placeholder="Nom de scène"
-                    v-model="nickname"
+                    aria-label=".form-control-sm example"
                 />
                 <p
                     class="errors"
@@ -60,10 +77,11 @@
                 ></p>
 
                 <input
-                    class="form_input"
+                    v-model="email"
+                    class="form-control form-control-sm"
                     type="email"
                     placeholder="Email"
-                    v-model="email"
+                    aria-label=".form-control-sm example"
                 />
                 <p
                     class="errors"
@@ -72,10 +90,11 @@
                 ></p>
 
                 <input
-                    class="form_input"
+                    v-model="password"
+                    class="form-control form-control-sm"
                     type="password"
                     placeholder="Mot de passe"
-                    v-model="password"
+                    aria-label=".form-control-sm example"
                 />
                 <p
                     class="errors"
@@ -83,7 +102,9 @@
                     v-text="errors.password[0]"
                 ></p>
 
-                <button class="btn_update" @click="updateInfo">Valider</button>
+                <button class="btn btn-secondary" @click="updateInfo">
+                    Valider
+                </button>
             </form>
         </div>
     </div>
@@ -122,6 +143,9 @@ export default {
         formUpdate() {
             this.update = true;
         },
+        addEnvent() {
+            this.$router.push({ name: "addEvent" });
+        },
         async updateInfo() {
             await axios({
                 method: "put",
@@ -142,17 +166,29 @@ export default {
                 });
 
             console.log(this.infoUpdate);
+            if (this.errors) {
+                alert("Vérifiez les champs");
+            } else {
+                this.$router.go(0);
+            }
         },
     },
 };
 </script>
 
 <style scopped>
+.box_btn-profil {
+    display: flex;
+    justify-content: space-around;
+}
+.btn {
+    width: 150px;
+}
 .container-fluid {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 500px;
+    height: 80vh;
 }
 .form_update {
     display: flex;
@@ -161,6 +197,9 @@ export default {
 }
 .container_info {
     width: 350px;
+}
+.form_update input {
+    margin-bottom: 10px;
 }
 
 .box_update,
