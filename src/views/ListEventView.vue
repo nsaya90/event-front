@@ -1,13 +1,17 @@
 <template>
-    <h1>Liste événement</h1>
-    <div class="box" v-for="elem in allEvent" :key="elem.id">
-        <p>{{ elem.title }}</p>
-        <!-- <p>{{ elem.city }}</p> -->
-        <p>{{ elem.date }}</p>
-        <p>{{ elem.hours }}</p>
-        <p>{{ elem.adress }}</p>
-        <p>{{ elem.city }}</p>
-        <p>{{ elem.description }}</p>
+    <div class="container-fluid">
+        <h1>Liste événement</h1>
+        <div class="box-card" v-for="elem in getEvent" :key="elem.id">
+            <card
+                :path="`http://localhost:8000/storage/${elem.image}`"
+                :cardTitle="`${elem.title}`"
+                :description="`${elem.description}`"
+                :date="`${elem.date}`"
+                :hours="`${elem.hours}`"
+                :adress="`${elem.adress}`"
+                :city="`${elem.city}`"
+            ></card>
+        </div>
     </div>
 </template>
 
@@ -15,12 +19,15 @@
 const idUser = localStorage.getItem("id");
 const token = localStorage.getItem("token");
 import axios from "axios";
+import Card from "@/components/Card.vue";
 
 export default {
     name: "ListEventView",
+    components: { Card },
+
     data() {
         return {
-            allEvent: "",
+            getEvent: "",
             info: "",
         };
     },
@@ -33,10 +40,14 @@ export default {
                 Authorization: `Bearer ${token}`,
             },
         }).then((response) => (this.info = response.data));
-        this.allEvent = this.info.events;
+        this.getEvent = this.info.events;
     },
     methods: {},
 };
 </script>
 
-<style></style>
+<style>
+.box-card {
+    margin-bottom: 15px;
+}
+</style>
