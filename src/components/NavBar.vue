@@ -9,9 +9,7 @@
                 ><img class="logo" src="../assets/logo.jpg" alt="logo"
             /></router-link>
         </li>
-        <li class="nav-item">
-            <router-link to="" class="nav-link">Visiteur</router-link>
-        </li>
+
         <li class="nav-item">
             <router-link to="/profil" class="nav-link" v-if="idUser"
                 >Professionel</router-link
@@ -41,6 +39,7 @@ export default {
 .nav {
     display: flex;
     align-items: center;
+    justify-content: space-around;
     border-bottom: #fea347 solid 2px;
 }
 .logo {

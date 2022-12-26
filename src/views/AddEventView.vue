@@ -19,10 +19,10 @@
                         @change="checkType"
                     >
                         <option selected>Sélection un genre</option>
-                        <option value="spectacle">Spectacle</option>
-                        <option value="concert">Concert</option>
-                        <option value="sport">Sport</option>
-                        <option value="soirée">Soirée</option>
+                        <option value="Spectacle">Spectacle</option>
+                        <option value="Concert">Concert</option>
+                        <option value="Sport">Sport</option>
+                        <option value="Soirée">Soirée</option>
                     </select>
                 </div>
 

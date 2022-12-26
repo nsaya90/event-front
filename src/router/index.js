@@ -6,6 +6,7 @@ import LoginView from "../views/LoginView.vue";
 import ProfilView from "../views/ProfilView.vue";
 import AddEventView from "../views/AddEventView.vue";
 import ListEventView from "../views/ListEventView.vue";
+import EventDetailView from "../views/EventDetailView.vue";
 
 const routes = [
     {
@@ -42,6 +43,11 @@ const routes = [
         path: "/list-event",
         name: "listEvent",
         component: ListEventView,
+    },
+    {
+        path: "/event-detail",
+        name: "eventDetail",
+        component: EventDetailView,
     },
 ];
 
