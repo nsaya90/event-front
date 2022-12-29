@@ -1,11 +1,7 @@
 <template>
     <ul class="nav">
         <li class="nav-item">
-            <router-link to="/list-event" class="nav-link" v-if="idUser"
-                ><img class="logo" src="../assets/logo.jpg" alt="logo"
-            /></router-link>
-
-            <router-link to="/" class="nav-link" v-else
+            <router-link to="/" class="nav-link"
                 ><img class="logo" src="../assets/logo.jpg" alt="logo"
             /></router-link>
         </li>
@@ -37,10 +33,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .nav {
-    display: flex;
     align-items: center;
     justify-content: space-around;
-    border-bottom: #fea347 solid 2px;
+    border-bottom: #fea347 solid 10px;
 }
 .logo {
     width: 95px;

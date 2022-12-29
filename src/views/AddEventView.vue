@@ -43,6 +43,7 @@
                     class="form-control form-control-mb"
                     type="date"
                     aria-label=".form-control-sm example"
+                    :min="`${dateNow}`"
                     @change="checkDate"
                     v-model="date"
                 />
@@ -118,8 +119,14 @@ export default {
             urlImage: "",
             urlFile: "",
             infoEvent: "",
+            dateNow: "",
         };
     },
+    created() {
+        var today = new Date().toISOString().slice(0, 10);
+        this.dateNow = today;
+    },
+
     methods: {
         async file(e) {
             this.image = e.target.files[0];

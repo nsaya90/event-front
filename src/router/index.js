@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+
 import ProView from "../views/ProView.vue";
 import RegisterView from "../views/RegisterView.vue";
 import LoginView from "../views/LoginView.vue";
@@ -7,12 +7,18 @@ import ProfilView from "../views/ProfilView.vue";
 import AddEventView from "../views/AddEventView.vue";
 import ListEventView from "../views/ListEventView.vue";
 import EventDetailView from "../views/EventDetailView.vue";
+import FilterView from "../views/FilterView.vue";
 
 const routes = [
     {
         path: "/",
-        name: "home",
-        component: HomeView,
+        name: "listEvent",
+        component: ListEventView,
+    },
+    {
+        path: "/filter",
+        name: "FilterView",
+        component: FilterView,
     },
     {
         path: "/pro",
@@ -39,11 +45,7 @@ const routes = [
         name: "addEvent",
         component: AddEventView,
     },
-    {
-        path: "/list-event",
-        name: "listEvent",
-        component: ListEventView,
-    },
+
     {
         path: "/event-detail",
         name: "eventDetail",
