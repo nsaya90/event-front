@@ -56,17 +56,16 @@ export default {
     name: "NavFilter",
     data() {
         return {
-            type: null,
-            city: null,
+            type: "",
+            city: "",
         };
     },
     methods: {
         filter() {
-            // localStorage.setItem("type", this.type);
-            // location = "http://localhost:8080/filter";
+            localStorage.setItem("type", this.type);
+            location = "http://localhost:8080/filter";
 
-            const filterCity = this.city;
-            localStorage.setItem("type", filterCity);
+            localStorage.setItem("city", this.city);
             location = "http://localhost:8080/filter";
         },
     },

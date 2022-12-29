@@ -4,6 +4,7 @@
     </div>
     <div class="box-filter-date">
         <p>Trouver un événement</p>
+
         <form class="box-date">
             <input
                 type="date"
@@ -116,8 +117,13 @@ export default {
 }
 .box-date {
     display: flex;
+
     justify-content: space-around;
+
     width: 100%;
+}
+.box-date button {
+    width: 110px;
 }
 
 input[type="date"] {
@@ -128,6 +134,7 @@ input[type="date"] {
     font-size: 18px;
     border: 1px solid #ecf0f1;
 
+    width: 100px;
     padding: 5px;
     display: inline-block !important;
     visibility: visible !important;
